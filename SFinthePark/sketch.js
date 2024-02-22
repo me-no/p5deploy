@@ -1,6 +1,3 @@
-const origin = window.location.origin;
-let absolutePath = origin + "/p5/blue2022/";// 作品ごとにパスを変えること
-
 let scal = 2;
 
 // for sine wave 
@@ -55,10 +52,11 @@ function setup() {
 
   // for iframe on gallery 
   canvas = createCanvas(cwidth, cheight);
-  canvas.style('width','100%');canvas.style('height','auto');
 
   background(210,233,236);
   frameRate(10);
+  canvas.style('width','100%');canvas.style('height','auto');
+
 }
 
 function draw() {
