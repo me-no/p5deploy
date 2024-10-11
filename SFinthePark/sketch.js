@@ -42,20 +42,23 @@ function preload() {
   imgclock = loadImage("clock.png");
   
   imgdisplight = loadImage("displaylight.png");
-
+  
+  imgfootstep = loadImage("footstep.png");
+  imgcatsneak = loadImage("catsneaking.png");
+  imgcatspd1 = loadImage("catsuspended1.png");
+  imgcatspd2 = loadImage("catsuspended2.png");
 }
 
 
 function setup() {
   cwidth = imgback.width/4*scal;
   cheight = imgback.height/4*scal;
-
   // for iframe on gallery 
-  canvas = createCanvas(cwidth, cheight);
-
+  canvas = createCanvas(cwidth, cheight);// サイト用
   background(210,233,236);
   frameRate(10);
-  canvas.style('width','100%');canvas.style('height','auto');
+  
+  canvas.style('width','100%');canvas.style('height','auto');// レスポンシブ対応
 
 }
 
@@ -144,6 +147,7 @@ function draw() {
       image(imgr4,  0, 0, cwidth, cheight);
     } else {
       image(imgslider, 0, 0, cwidth, cheight);
+      image(imgcatsneak, 0, 0, cwidth, cheight);
     }
   } else {
     image(imgslider, 0, 0, cwidth, cheight);
@@ -163,6 +167,13 @@ function draw() {
       rect(160*scal,(98-3-i)*scal, scal, scal);
       rect(158*scal, (96-i)*scal, scal, scal);
       rect(156*scal, (99-i)*scal, scal, scal);
+    }
+    if(mouseIsPressed) {
+      if(count >10) {
+        image(imgcatspd1, 0, 0, cwidth,cheight);
+      } else {
+        image(imgcatspd2,0,0,cwidth,cheight);
+      }
     }
   }
   
@@ -222,6 +233,9 @@ function draw() {
   if(count > 20+rest*2) {
     count = 0;
   }
+  
+  // for cats
+  image(imgfootstep, 0, 0, cwidth,cheight);
 }
 
 function makeRhombus (x, y, r, color) {// xyは左上、rは大きさ、colorは透過色込み
